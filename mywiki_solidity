@@ -1,0 +1,135 @@
+##########
+# syntax # 
+
+pragma solidity ^0.4.19;
+import "./relativepath.sol"
+
+function createZombie(string _arg1, uint _arg2) <privacy> return (uint, string...) {}
+
+struct Person {
+    uint age;
+    string name;
+}
+    in struct, pack uint together by size for gas saving
+
+###########
+# Library #
+
+import "library.sol"
+
+    #in contract@
+using library for <type>;
+
+##########
+# mapping#
+
+mapping (uint => string) userIdToName;
+    => give id return access username
+
+##########
+# fct type #
+
+    # modifer and constructor #
+function Ownable() {} == Constructor executed only on the contract creation 
+
+modifier onlyOwner(uint userID) {} == Called by other fct, exectued before and stop on "_;" to go back on the other fct 
+    usage :
+        function changeOwner() public onlyOwner(id) returns() {}
+
+    # public vs private # 
+function name()  (public) {}    anyone/anycontract can call the function
+function _name() private  {}    only this contract can call the function 
+
+    # internal vs external #
+function name() internal  {}    == private but contract can inherit !
+function name() external  {}    == fct can only be called outsde the contract 
+
+    # view and oure fct #
+if called externally they doesn't cost any gas 
+view : Only view data, doesn't modify data 
+pure : doesn't even read data from bloblo 
+
+    # payable # 
+function Ownable() payable {} == fct can receive payment with msg.value. If fct receive payment but is not payable, transac rejected
+
+
+
+##########
+# Type #
+uint 
+uint8 >--> uint256
+uint[4] zorgs;              fixed array
+uint[]  zorgs;              dynamic array
+Person[] french;            dynamic Structure Array
+Person[] public frenchs;    Public Create a getter
+
+tips :
+    smaller uint, less gas
+    in struct, pack uint together by size for gas saving 
+
+cast :
+    c = a * uint8(b);
+
+#####################
+# storage vs memory #
+function are by default: storage and written permanently to the blockchain
+Variable inside fct are memory and will disappear when the function call ends.
+
+=>  Storage == pointers 
+    memory == copy
+
+Storage is written on the blockchain, all the nodes DAMN !!!
+Copy an array is cheaper than pass a pointer. So re construct and pass an array is better than pass a pointer 
+
+##########
+# event  #
+Way for contract to communicate to front-end 
+    declare:    event IntegersAdded(uint x, uint y, uint result);
+    call:       IntegersAdded(_x, _y, result);
+
+
+#########
+# method #
+keccak256()
+msg.sender                  == mdg sender address
+x.push(arg1, arg2...);      add args to list x 
+require(x == y);            continue fct or not 
+assert (x ==y);             same but require refund the gas
+define fees : uint levelUpFee = 0.001 ether;
+Random : uint(keccak256(now, msg.sender, randNonce)) % _modulus; (!!!!!!)
+    https://ethereum.stackexchange.com/questions/191/how-can-i-securely-generate-a-random-number-in-my-smart-contract
+
+    #Token method#
+    function balanceOf(address _owner) public view returns (uint256 _balance);
+    this.balance == total balance stored in contract 
+    transfer == send ether to any ETH address 
+
+###############
+# inheritance #
+
+contract x  is y {}         x inherit y
+fct type internal make contract inherit from private fct
+
+#############
+# interface #
+
+Only interact with public or external functions
+
+define an interface : 
+contract Numberinteface {
+    function getNum(adress _myadress) public view returns (uint, string);
+}
+vs function : No function body define with {}, line end with ;
+
+Interface returns : (,mystring) = getNum(adressX) => ignore utin, save string
+
+##############
+# Time units #
+
+seconds, minutes, hours, days, weeks and years
+These will convert to a uint of the number of seconds in that length of time. 
+
+now is time from 01/01/70
+
+sources : 
+    cryptozombies.io
