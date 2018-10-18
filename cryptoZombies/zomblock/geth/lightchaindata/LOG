@@ -1,0 +1,6 @@
+=============== Oct 18, 2018 (UTC) ===============
+11:40:39.027873 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+11:40:39.036196 db@open opening
+11:40:39.037638 version@stat F·[] S·0B[] Sc·[]
+11:40:39.040154 db@janitor F·2 G·0
+11:40:39.040257 db@open done T·3.971453ms

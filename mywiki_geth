@@ -1,0 +1,60 @@
+# Install on ubuntu #
+
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository -y ppa:ethereum/ethereum
+    sudo apt-get update
+    sudo apt-get install ethereum
+    apt-get install git
+
+    geth account new                    to create an account on your node
+
+# Begin #
+    http://www.talkcrypto.org/blog/2018/01/23/what-is-geth/
+
+    > geth                  download the bloblo
+    > get attach            open console
+    >> eth.syncing          get the current block and the highest block
+
+# Go Private network # 
+    TUTO OK : https://medium.com/coinmonks/ethereum-setting-up-a-private-blockchain-67bbb96cf4f1
+
+
+
+# usefull cmd # 
+3 types :   miner.
+            eth.
+            personal. 
+            
+
+# Create private blockchain #
+    geth --datadir ./datadirn_1 init genesis.json
+    geth --datadir ./datadir_n2 init genesis.json
+    geth --datadir ./datadir_n1 --networkid 122 console
+    geth --datadir ./datadir_n2 --networkid 122 --port 30306 --nodiscover console
+
+    geth --datadir ./datadirn_1 --networkid 122 -port 30306 -nodiscover -rpc -rpcapi "db,personal,eth,net,web3,debug" -rpccorsdomain="*" -rpcaddr="localhost" -rpcport 8545 console 
+            -rpc help : geth --help | grep rpc
+            -rpcapi details https://ethereum.stackexchange.com/questions/41112/what-do-these-geth-rpcapi-parameters-mean-db-and-net
+    
+    # Add peer #
+        n2 > admin.nodeInfo.enode
+        n1 > admin.addPeer("<n2enode>")
+        n1 > admin.peers
+
+# geth console cmd # 
+eth.accounts
+eth.getBalance(eth.accounts[0])
+eth.blockNumber 
+eth.sendTransaction({from:”address”, to:”address”, value: web3.toWei(amount, "ether")})
+
+
+# ERRORS #
+Fatal: Error starting protocol stack: listen unix /42/zomblock/geth.ipc: bind: operation not permitted
+ --ipcdisable
+
+ Error: etherbase missing: etherbase must be explicitly specified
+ personal.newAccount("passphrase")
+
+
+
+ /////// https://medium.com/coinmonks/ethereum-setting-up-a-private-blockchain-67bbb96cf4f1 //////
