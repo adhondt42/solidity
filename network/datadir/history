@@ -1,0 +1,8 @@
+admin.nodeInfo
+admin.addPeer("enode://ea21f8bff877374ed767b9a758322dcf034f56a62914adbcff149a44669ae95d0dd384b4f28c63ba0956b602c81035033bb3448dca692a7e346b23e9b2ef950a@[::]:30306?discport=0")
+admin.peers
+miner.start()
+miner.start(1)
+eth.newAccount()
+personale.newAccount()
+miner.start(1)
