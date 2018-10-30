@@ -27,12 +27,12 @@
             
 
 # Create private blockchain #
-    geth --datadir ./datadirn_1 init genesis.json
+    geth --datadir ./datadir_n1 init genesis.json
     geth --datadir ./datadir_n2 init genesis.json
     geth --datadir ./datadir_n1 --networkid 122 console
     geth --datadir ./datadir_n2 --networkid 122 --port 30306 --nodiscover console
 
-    geth --datadir ./datadirn_1 --networkid 122 -port 30306 -nodiscover -rpc -rpcapi "db,personal,eth,net,web3,debug" -rpccorsdomain="*" -rpcaddr="localhost" -rpcport 8545 console 
+    geth --datadir ./datadir_n1 --networkid 122 -port 30306 -nodiscover -rpc -rpcapi "db,personal,eth,net,web3,debug" -rpccorsdomain="*" -rpcaddr="localhost" -rpcport 8545 console 
             -rpc help : geth --help | grep rpc
             -rpcapi details https://ethereum.stackexchange.com/questions/41112/what-do-these-geth-rpcapi-parameters-mean-db-and-net
     
